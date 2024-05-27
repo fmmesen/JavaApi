@@ -22,11 +22,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<UserModel> getUserById(Long id){
+    public Optional<UserModel> getUserById(String id){
         return userRepository.findById(id);
     }
 
-    public UserModel updateById(UserModel newUser, Long id){
+    public UserModel updateById(UserModel newUser, String id){
         UserModel user = userRepository.findById(id).get();
 
         user.setUsername(newUser.getUsername());
@@ -40,7 +40,7 @@ public class UserService {
         return user;
     }
 
-    public boolean deleteById(Long id){
+    public boolean deleteById(String id){
         try{
             userRepository.deleteById(id);
             return true;

@@ -23,21 +23,22 @@ public class UserController {
 
     @PostMapping
     public UserModel postUser(@RequestBody UserModel user) {
+        user.setId("AD" + user.getId());
         return this.userService.postUser(user);
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<UserModel> getUserById(@PathVariable Long id) {
+    public Optional<UserModel> getUserById(@PathVariable String id) {
         return this.userService.getUserById(id);
     }
 
     @PutMapping(path = "/{id}")
-    public UserModel updateUserById(@PathVariable Long id, @RequestBody UserModel newUser) {
+    public UserModel updateUserById(@PathVariable String id, @RequestBody UserModel newUser) {
         return this.userService.updateById(newUser, id);
     }
 
     @DeleteMapping(path = "/{id}")
-    public String deleteUserById(@PathVariable Long id) {
+    public String deleteUserById(@PathVariable String id) {
         boolean ok = this.userService.deleteById(id);
 
         if (ok){
