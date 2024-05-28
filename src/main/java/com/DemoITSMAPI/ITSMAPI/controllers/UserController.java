@@ -23,7 +23,6 @@ public class UserController {
 
     @PostMapping
     public UserModel postUser(@RequestBody UserModel user) {
-        user.setId("AD" + user.getId());
         return this.userService.postUser(user);
     }
 
